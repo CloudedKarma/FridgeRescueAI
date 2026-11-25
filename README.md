@@ -532,3 +532,329 @@ Potential future work: paired utility intervals using saved trials, validation-o
 Dataset: Food.com Recipes and Interactions, Shuyang Li et al., Kaggle (link in Section 3). Related research: Li, S., Li, Y., and McAuley, J. (2019), *Generating Personalized Recipes from Historical User Preferences*. Software uses scikit-learn, NumPy, pandas and Streamlit. For exact reproduction preserve the dataset bytes, script versions, seeds, model bundles and dependency versions. The reported catalog SHA-256 is `841a46530f14f0c9d42b2c19b23428e8608030e4ea7df16689d32a4d3e0654d6`.
 
 This guide was prepared from the supplied Phase 5 source code, prior project patches and reported experiment outputs. The current local Windows installation and full Food.com dataset were not available for a fresh end-to-end run during documentation. The test checklist and alternate experiment sizes are instructions, not claims that those tests have been executed. If your local code differs, inspect the actual script's `--help` and preserve the research version before editing.
+
+
+## 13. Next Steps and Future Development
+
+Although Fridge Rescue AI currently has a functional recommendation system,
+seven recommendation algorithms, trained machine learning models, and
+completed synthetic evaluation experiments, there are several opportunities
+for further research, development, and improvement.
+
+The following roadmap outlines the remaining development objectives and
+potential future expansions of the project.
+
+### 13.1 Research and Scientific Evaluation
+
+The current experimental results provide evidence of recommendation
+performance under simulated inventory conditions. Additional experiments
+are needed to evaluate the system under more realistic conditions.
+
+- [ ] Conduct ablation studies to determine the contribution of individual
+      recommendation features.
+- [ ] Calculate paired confidence intervals for the composite utility score.
+- [ ] Investigate why supervised learning received a weight of zero in
+      the optimized FROR ranking formula.
+- [ ] Compare recommendation performance using different random seeds.
+- [ ] Evaluate model consistency across multiple experimental runs.
+- [ ] Test recommendation performance with different inventory sizes.
+- [ ] Test recommendation performance with different recipe catalog sizes.
+- [ ] Evaluate the effects of ingredient normalization on recommendation
+      accuracy.
+- [ ] Generate research-quality graphs and statistical visualizations.
+- [ ] Document experimental findings and limitations.
+
+### 13.2 Dataset Scalability
+
+The current research experiments use a reproducible sample of 20,000
+recipes from the Food.com dataset, which contains 231,637 raw recipes.
+
+Future experiments should investigate how increasing the number of recipes
+affects recommendation performance, computational requirements, and
+execution time.
+
+Suggested recipe catalog sizes:
+
+| Dataset Size | Experimental Purpose |
+| --- | --- |
+| 1,000 | Rapid debugging and functionality testing |
+| 5,000 | Small-scale experiments |
+| 20,000 | Current research configuration |
+| 50,000 | Medium-scale performance evaluation |
+| 100,000 | Large-scale scalability evaluation |
+| Full dataset | Maximum catalog size and stress testing |
+
+For each dataset size, evaluate:
+
+- Model training time.
+- Dataset preprocessing time.
+- Memory consumption.
+- Recommendation response time.
+- Hit@5 and MRR@5.
+- Average missing ingredients.
+- Ingredient utilization.
+- Complete recipe rate.
+- Composite utility score.
+
+Each experiment should use separate output directories to prevent existing
+research results from being overwritten. Models must be retrained when the
+recipe catalog changes.
+
+### 13.3 Machine Learning Improvements
+
+Fridge Rescue AI currently implements seven recommendation algorithms,
+including two supervised machine learning models and one validation-optimized
+multi-objective ranking algorithm.
+
+Potential improvements include:
+
+- [ ] Investigate finer FROR weight search increments.
+- [ ] Explore randomized search and Bayesian optimization.
+- [ ] Evaluate gradient boosting models.
+- [ ] Investigate learning-to-rank algorithms.
+- [ ] Explore neural network-based recommendation models.
+- [ ] Evaluate alternative training features.
+- [ ] Investigate class imbalance and training candidate selection.
+- [ ] Experiment with ingredient association rule mining.
+- [ ] Investigate personalized recipe recommendations using user feedback.
+- [ ] Evaluate whether historical recipe ratings improve recommendation
+      quality.
+- [ ] Compare model complexity against recommendation performance.
+
+Any additional machine learning models should be compared against the
+existing algorithms using consistent evaluation metrics and experimental
+conditions.
+
+The existing final test results should not be used to optimize new models.
+Future model changes should be evaluated using a new independent test set.
+
+### 13.4 Ingredient and Recipe Data Improvements
+
+The current implementation uses structured Food.com ingredient names and
+conservative ingredient normalization rules.
+
+Although this approach provides a usable ingredient vocabulary, some
+inconsistencies and equivalent ingredient names may remain.
+
+Potential improvements include:
+
+- [ ] Evaluate the official Food.com ingredient ID mappings.
+- [ ] Improve ingredient synonym recognition.
+- [ ] Improve spelling correction suggestions.
+- [ ] Introduce ingredient categories.
+- [ ] Distinguish required ingredients from optional ingredients.
+- [ ] Support alternative ingredients and substitutions.
+- [ ] Improve recognition of non-food recipe requirements.
+- [ ] Preserve meaningful differences between similar ingredients.
+- [ ] Investigate additional structured recipe datasets.
+- [ ] Add nutritional and dietary metadata.
+
+Ingredient preprocessing should remain a supporting component of the
+recommendation system rather than becoming the primary development focus.
+
+### 13.5 Recommendation System Improvements
+
+The current recommendation algorithms rank recipes based on ingredient
+availability, similarity, utilization, and other recipe features.
+
+Future versions could provide additional recommendation options based on
+individual user priorities.
+
+- [ ] Separate completely matched recipes from partially matched recipes.
+- [ ] Allow users to specify the maximum number of missing ingredients.
+- [ ] Prioritize ingredients approaching their expiration dates.
+- [ ] Introduce quantity-aware ingredient matching.
+- [ ] Support ingredient substitutions.
+- [ ] Recommend recipes based on preparation time.
+- [ ] Recommend recipes based on nutritional requirements.
+- [ ] Support dietary preferences and restrictions.
+- [ ] Introduce customizable recommendation priorities.
+- [ ] Recommend multiple meals that share common ingredients.
+- [ ] Introduce weekly meal planning.
+
+Example recommendation modes:
+
+| Recommendation Mode | Primary Objective |
+| --- | --- |
+| Make Now | Recommend recipes with no missing ingredient types |
+| Minimize Shopping | Minimize additional ingredient requirements |
+| Reduce Potential Waste | Prioritize available and expiring ingredients |
+| Balanced | Balance relevance, utilization, and missing ingredients |
+| Quick Meals | Prioritize shorter preparation times |
+| Personalized | Incorporate individual user preferences |
+| Meal Planning | Recommend multiple complementary meals |
+
+Quantity-aware matching and expiration tracking would require additional
+inventory information that the current system does not collect.
+
+### 13.6 Human Evaluation
+
+The current research uses synthetic inventories generated from recipe data.
+
+Although these experiments allow controlled comparisons between recommendation
+algorithms, they do not directly measure real household food waste,
+shopping convenience, or meal planning satisfaction.
+
+A future human evaluation study should compare Fridge Rescue AI against
+traditional meal planning methods.
+
+- [ ] Recruit volunteer participants with appropriate consent.
+- [ ] Collect realistic household ingredient inventories.
+- [ ] Ask participants to plan meals without Fridge Rescue AI.
+- [ ] Ask participants to plan meals using Fridge Rescue AI.
+- [ ] Counterbalance the order of the two conditions where practical.
+- [ ] Measure the time required to select a recipe.
+- [ ] Measure the number of additional ingredients required.
+- [ ] Collect participant ratings of recommendation relevance.
+- [ ] Collect participant ratings of ease of use.
+- [ ] Evaluate overall participant satisfaction.
+- [ ] Analyze and document the collected results.
+
+Suggested evaluation measurements:
+
+| Measurement | Purpose |
+| --- | --- |
+| Meal planning time | Evaluate planning efficiency |
+| Additional ingredients | Estimate potential shopping requirements |
+| Recommendation relevance | Evaluate perceived recommendation quality |
+| Ingredient utilization | Estimate use of existing inventory |
+| User satisfaction | Evaluate the overall experience |
+| Ease of use | Evaluate application usability |
+| Actual discarded food | Measure household food waste over time |
+
+Actual food waste reduction would require a longer-term study that measures
+food discarded by participating households.
+
+Participant information should be anonymized, collected with consent, and
+handled in accordance with applicable institutional research requirements.
+
+### 13.7 Application Improvements
+
+The Streamlit application currently provides an interface for interacting
+with the recommendation system and managing a grocery list.
+
+Potential improvements include:
+
+- [ ] Complete end-to-end application testing.
+- [ ] Improve ingredient search and selection.
+- [ ] Add ingredient categories and filters.
+- [ ] Add recipe sorting and filtering options.
+- [ ] Save favorite recipes.
+- [ ] Maintain persistent household ingredient inventories.
+- [ ] Allow users to record ingredient quantities.
+- [ ] Allow users to record ingredient expiration dates.
+- [ ] Automatically update inventory after preparing a meal.
+- [ ] Improve grocery list organization.
+- [ ] Add nutritional information to recipe recommendations.
+- [ ] Improve accessibility and mobile compatibility.
+- [ ] Improve error messages and input validation.
+- [ ] Create an optional research performance dashboard.
+
+Application improvements should support the recommendation system without
+replacing machine learning and scientific evaluation as the primary focus
+of the project.
+
+### 13.8 Performance and Software Testing
+
+Additional testing should be implemented to improve software reliability,
+maintainability, and reproducibility.
+
+- [ ] Create automated unit tests for active Python modules.
+- [ ] Create integration tests for dataset preparation and model training.
+- [ ] Create automated recommendation accuracy tests.
+- [ ] Test ingredient normalization edge cases.
+- [ ] Test empty and invalid user inventories.
+- [ ] Test grocery list persistence.
+- [ ] Test missing and corrupted dataset files.
+- [ ] Test incompatible or missing trained model files.
+- [ ] Measure end-to-end recommendation response time.
+- [ ] Measure CPU and memory usage.
+- [ ] Investigate caching and computational optimizations.
+- [ ] Test compatibility across supported Python versions.
+- [ ] Test compatibility across Windows, Linux, and macOS.
+- [ ] Introduce automated testing through GitHub Actions.
+
+Performance benchmarks should distinguish between ranking execution time
+and total application response time, including feature computation,
+dataset loading, and interface overhead.
+
+### 13.9 Deployment and Distribution
+
+Future versions could make Fridge Rescue AI easier to install and use
+without requiring users to configure a complete Python development
+environment manually.
+
+- [ ] Provide a simplified installation script.
+- [ ] Create a Docker-based deployment configuration.
+- [ ] Investigate cloud-based application hosting.
+- [ ] Create a REST API for recipe recommendations.
+- [ ] Investigate a standalone desktop application.
+- [ ] Investigate a mobile application.
+- [ ] Create versioned GitHub releases.
+- [ ] Document supported software and hardware configurations.
+- [ ] Establish a contribution and issue-reporting process.
+
+External datasets should be obtained from their original distribution
+sources unless their redistribution terms explicitly permit inclusion
+in this repository.
+
+### 13.10 Long-Term Development Opportunities
+
+Fridge Rescue AI could eventually expand beyond recipe recommendations
+into a more comprehensive household food management system.
+
+Potential long-term features include:
+
+- Barcode scanning for ingredient identification.
+- Image-based ingredient recognition.
+- Grocery receipt scanning using optical character recognition (OCR).
+- AI-assisted refrigerator inventory management.
+- Automatic expiration date tracking.
+- Food spoilage notifications.
+- Ingredient substitution recommendations.
+- Budget-aware meal planning.
+- Grocery price comparisons.
+- Personalized nutritional recommendations.
+- Multi-day and weekly meal planning.
+- Household food consumption analysis.
+- Household food waste tracking.
+
+These features would require additional datasets, machine learning models,
+external services, or application components and are not part of the
+current implementation.
+
+### 13.11 Development Priorities
+
+Future development should follow the priority order below.
+
+| Priority | Development Area |
+| --- | --- |
+| Critical | Complete scientific analysis |
+| Critical | Verify application functionality and reliability |
+| Critical | Preserve experimental reproducibility |
+| High | Conduct human evaluation |
+| High | Perform ablation studies |
+| High | Implement automated software testing |
+| High | Improve recommendation constraints |
+| Medium | Evaluate larger recipe datasets |
+| Medium | Investigate machine learning improvements |
+| Medium | Improve ingredient and inventory management |
+| Medium | Improve the user interface |
+| Low | Cloud deployment and mobile applications |
+| Low | External grocery service integration |
+| Long-term | Automated food recognition and waste tracking |
+
+### 13.12 Long-Term Project Goal
+
+The long-term goal of Fridge Rescue AI is to develop an intelligent,
+inventory-aware food management and recipe recommendation system that
+helps users make better use of available ingredients, identify potential
+meals, and reduce unnecessary grocery purchases.
+
+Future development should continue to prioritize measurable improvements,
+scientific evaluation, reproducibility, software reliability, and
+responsible use of artificial intelligence.
+
+Claims concerning actual food waste reduction, financial savings, and
+improved meal planning should only be made when supported by appropriate
+experimental evidence.
