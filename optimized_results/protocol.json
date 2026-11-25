@@ -1,0 +1,28 @@
+{
+  "seed": 123,
+  "previous_seed": 42,
+  "previous_train_queries": 1000,
+  "previous_test_queries": 300,
+  "previous_seen_targets": 298,
+  "train_targets": 12000,
+  "validation_targets": 4000,
+  "test_targets": 4000,
+  "train_queries": 2000,
+  "validation_queries": 200,
+  "test_queries": 500,
+  "weights": [
+    0.0,
+    0.25,
+    0.0,
+    0.5,
+    0.25
+  ],
+  "parameters": {
+    "Logistic regression": "0.1",
+    "Random forest": "10"
+  },
+  "utility": "MRR + 0.5 utilization - 0.5 missing/5 + 0.25 complete_rate",
+  "dataset_sha256": "841a46530f14f0c9d42b2c19b23428e8608030e4ea7df16689d32a4d3e0654d6",
+  "prior_bundle_verified": true,
+  "interpretation": "Synthetic target retrieval; not human preference or real food waste. Prior target split replay assumes unchanged catalog and original training code."
+}

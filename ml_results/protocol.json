@@ -1,0 +1,22 @@
+{
+  "seed": 42,
+  "train_queries": 1000,
+  "test_queries": 300,
+  "train_target_recipes": 14000,
+  "test_target_recipes": 6000,
+  "catalog": 20000,
+  "ratings_file_used": true,
+  "features": [
+    "coverage",
+    "utilization",
+    "cosine",
+    "jaccard",
+    "missing",
+    "recipe_size",
+    "overlap",
+    "minutes",
+    "train_rating",
+    "train_rating_count"
+  ],
+  "interpretation": "Synthetic target retrieval; non-target candidates are unlabeled, not confirmed dislikes. Full catalog used at test; no human pantry observations."
+}

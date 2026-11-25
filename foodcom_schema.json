@@ -1,0 +1,182 @@
+{
+  "RAW_recipes.csv": {
+    "columns": [
+      "name",
+      "id",
+      "minutes",
+      "contributor_id",
+      "submitted",
+      "tags",
+      "nutrition",
+      "n_steps",
+      "steps",
+      "description",
+      "ingredients",
+      "n_ingredients"
+    ],
+    "examples": [
+      {
+        "name": "arriba   baked winter squash mexican style",
+        "id": "137739",
+        "ingredients": "['winter squash', 'mexican seasoning', 'mixed spice', 'honey', 'butter', 'olive oil', 'salt']"
+      },
+      {
+        "name": "a bit different  breakfast pizza",
+        "id": "31490",
+        "ingredients": "['prepared pizza crust', 'sausage patty', 'eggs', 'milk', 'salt and pepper', 'cheese']"
+      },
+      {
+        "name": "all in the kitchen  chili",
+        "id": "112140",
+        "ingredients": "['ground beef', 'yellow onions', 'diced tomatoes', 'tomato paste', 'tomato soup', 'rotel tomatoes', 'kidney beans', 'water', 'chili powder', 'ground cumin', 'salt', 'lettuce', 'cheddar cheese']"
+      }
+    ]
+  },
+  "PP_recipes.csv": {
+    "columns": [
+      "id",
+      "i",
+      "name_tokens",
+      "ingredient_tokens",
+      "steps_tokens",
+      "techniques",
+      "calorie_level",
+      "ingredient_ids"
+    ],
+    "examples": [
+      {
+        "id": "424415",
+        "i": "23",
+        "ingredient_ids": "[389, 7655, 6270, 1527, 3406]"
+      },
+      {
+        "id": "146223",
+        "i": "96900",
+        "ingredient_ids": "[2683, 4969, 800, 5298, 840, 2499, 6632, 7022, 1511, 3248, 4964, 6270]"
+      },
+      {
+        "id": "312329",
+        "i": "120056",
+        "ingredient_ids": "[1257, 7655, 6270, 590, 5024, 1119, 4883, 6696, 7946, 5648, 7239, 7705, 7594, 1168, 2683]"
+      }
+    ]
+  },
+  "RAW_interactions.csv": {
+    "columns": [
+      "user_id",
+      "recipe_id",
+      "date",
+      "rating",
+      "review"
+    ],
+    "examples": [
+      {
+        "recipe_id": "40893",
+        "rating": "4"
+      },
+      {
+        "recipe_id": "40893",
+        "rating": "5"
+      },
+      {
+        "recipe_id": "44394",
+        "rating": "4"
+      }
+    ]
+  },
+  "interactions_train.csv": {
+    "columns": [
+      "user_id",
+      "recipe_id",
+      "date",
+      "rating",
+      "u",
+      "i"
+    ],
+    "examples": [
+      {
+        "recipe_id": "4684",
+        "rating": "5.0",
+        "u": "22095",
+        "i": "44367"
+      },
+      {
+        "recipe_id": "517",
+        "rating": "5.0",
+        "u": "22095",
+        "i": "87844"
+      },
+      {
+        "recipe_id": "7435",
+        "rating": "5.0",
+        "u": "24732",
+        "i": "138181"
+      }
+    ]
+  },
+  "interactions_validation.csv": {
+    "columns": [
+      "user_id",
+      "recipe_id",
+      "date",
+      "rating",
+      "u",
+      "i"
+    ],
+    "examples": [
+      {
+        "recipe_id": "33627",
+        "rating": "4.0",
+        "u": "5",
+        "i": "177317"
+      },
+      {
+        "recipe_id": "75307",
+        "rating": "4.0",
+        "u": "23",
+        "i": "170785"
+      },
+      {
+        "recipe_id": "100961",
+        "rating": "4.0",
+        "u": "31",
+        "i": "165555"
+      }
+    ]
+  },
+  "interactions_test.csv": {
+    "columns": [
+      "user_id",
+      "recipe_id",
+      "date",
+      "rating",
+      "u",
+      "i"
+    ],
+    "examples": [
+      {
+        "recipe_id": "44551",
+        "rating": "4.0",
+        "u": "2",
+        "i": "173538"
+      },
+      {
+        "recipe_id": "126118",
+        "rating": "4.0",
+        "u": "16",
+        "i": "177847"
+      },
+      {
+        "recipe_id": "219596",
+        "rating": "0.0",
+        "u": "26",
+        "i": "89896"
+      }
+    ]
+  },
+  "ingr_map.pkl": {
+    "exists": true,
+    "bytes": 918790,
+    "note": "Not opened: pickle requires trusted provenance."
+  }
+}

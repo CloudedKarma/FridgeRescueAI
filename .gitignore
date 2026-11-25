@@ -1,0 +1,50 @@
+
+# Python virtual environments
+.venv/
+venv/
+env/
+
+# Python cache files
+__pycache__/
+*.py[cod]
+.pytest_cache/
+
+# IDE configuration
+.vscode/
+.idea/
+
+# Archived project files
+Archived/
+
+# External datasets
+data/FoodCom/
+full_dataset.csv
+recipes_full*.csv
+recipes_nlp*.csv
+recipes_foodcom.csv
+recipes_foodcom.vocabulary.csv
+
+# Trained machine learning models
+*.joblib
+*.pkl
+*.pickle
+
+# Local grocery database
+grocery.db
+grocery.db-journal
+grocery.db-wal
+grocery.db-shm
+
+# Environment variables and secrets
+.env
+.env.*
+.streamlit/secrets.toml
+
+# Operating system files
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Temporary files
+*.tmp
+*.log

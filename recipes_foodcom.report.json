@@ -1,0 +1,10 @@
+{
+  "scanned": 231637,
+  "valid": 231635,
+  "invalid": 2,
+  "sample_size": 20000,
+  "seed": 42,
+  "unique_ingredients": 6895,
+  "singleton_ingredients": 2424,
+  "method": "structured raw names; conservative aliases and plural normalization; no ingredient ID mapping applied"
+}
